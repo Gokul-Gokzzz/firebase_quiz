@@ -1,10 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_quiz/view/admin/add_quiz.dart';
-import 'package:firebase_quiz/view/home_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class AdminLogin extends StatefulWidget {
   const AdminLogin({super.key});
@@ -19,7 +15,7 @@ class _AdminLoginState extends State<AdminLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFededeb),
+      backgroundColor: const Color(0xFFededeb),
       body: SingleChildScrollView(
         child: Container(
           child: Stack(
@@ -27,11 +23,11 @@ class _AdminLoginState extends State<AdminLogin> {
               Container(
                 margin: EdgeInsets.only(
                     top: MediaQuery.of(context).size.height / 2),
-                padding: EdgeInsets.only(top: 45, right: 20, left: 20),
+                padding: const EdgeInsets.only(top: 45, right: 20, left: 20),
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                         colors: [Color.fromARGB(255, 53, 51, 51), Colors.black],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight),
@@ -41,18 +37,18 @@ class _AdminLoginState extends State<AdminLogin> {
                     )),
               ),
               Container(
-                margin: EdgeInsets.only(left: 30, right: 30, top: 60),
+                margin: const EdgeInsets.only(left: 30, right: 30, top: 60),
                 child: Form(
                     child: Column(
                   children: [
-                    Text(
+                    const Text(
                       'Lets Start With Admin!',
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 25,
                           fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                     Material(
@@ -66,17 +62,18 @@ class _AdminLoginState extends State<AdminLogin> {
                         ),
                         child: Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 50,
                             ),
                             Container(
-                              padding:
-                                  EdgeInsets.only(left: 20, top: 5, bottom: 5),
-                              margin: EdgeInsets.symmetric(horizontal: 20),
+                              padding: const EdgeInsets.only(
+                                  left: 20, top: 5, bottom: 5),
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 20),
                               decoration: BoxDecoration(
                                   border: Border.all(
-                                      color:
-                                          Color.fromARGB(255, 160, 160, 147)),
+                                      color: const Color.fromARGB(
+                                          255, 160, 160, 147)),
                                   borderRadius: BorderRadius.circular(10)),
                               child: Center(
                                 child: TextFormField(
@@ -85,8 +82,9 @@ class _AdminLoginState extends State<AdminLogin> {
                                     if (value == null || value.isEmpty) {
                                       return 'Please enter the username';
                                     }
+                                    return null;
                                   },
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                       border: InputBorder.none,
                                       hintText: "UserName",
                                       hintStyle: TextStyle(
@@ -95,17 +93,18 @@ class _AdminLoginState extends State<AdminLogin> {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
                             Container(
-                              padding:
-                                  EdgeInsets.only(left: 20, top: 5, bottom: 5),
-                              margin: EdgeInsets.symmetric(horizontal: 20),
+                              padding: const EdgeInsets.only(
+                                  left: 20, top: 5, bottom: 5),
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 20),
                               decoration: BoxDecoration(
                                   border: Border.all(
-                                      color:
-                                          Color.fromARGB(255, 160, 160, 147)),
+                                      color: const Color.fromARGB(
+                                          255, 160, 160, 147)),
                                   borderRadius: BorderRadius.circular(10)),
                               child: Center(
                                 child: TextFormField(
@@ -114,8 +113,9 @@ class _AdminLoginState extends State<AdminLogin> {
                                     if (value == null || value.isEmpty) {
                                       return 'Please enter the Password';
                                     }
+                                    return null;
                                   },
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                       border: InputBorder.none,
                                       hintText: "Password",
                                       hintStyle: TextStyle(
@@ -124,7 +124,7 @@ class _AdminLoginState extends State<AdminLogin> {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             GestureDetector(
@@ -132,14 +132,16 @@ class _AdminLoginState extends State<AdminLogin> {
                                 loginAdmin();
                               },
                               child: Container(
-                                padding: EdgeInsets.symmetric(vertical: 12),
-                                margin: EdgeInsets.symmetric(horizontal: 20),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 12),
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 20),
                                 width: MediaQuery.of(context).size.width,
                                 decoration: BoxDecoration(
                                   color: Colors.black,
                                   borderRadius: BorderRadius.circular(10),
                                 ),
-                                child: Text(
+                                child: const Text(
                                   'Login With Me',
                                   style: TextStyle(
                                     color: Colors.white,
@@ -165,25 +167,26 @@ class _AdminLoginState extends State<AdminLogin> {
 
   loginAdmin() {
     FirebaseFirestore.instance.collection("Admin").get().then((snapshot) {
-      snapshot.docs.forEach((result) {
+      for (var result in snapshot.docs) {
         if (result.data()['id'] != userNameController.text.trim()) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
               content: Text(
             'Your id is incorrect',
             style: TextStyle(fontSize: 18),
           )));
         } else if (result.data()['password'] !=
             passwordController.text.trim()) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
               content: Text(
             'Your password is incorrect',
             style: TextStyle(fontSize: 18),
           )));
         } else {
-          Route route = MaterialPageRoute(builder: ((context) => AddQuiz()));
+          Route route =
+              MaterialPageRoute(builder: ((context) => const AddQuiz()));
           Navigator.pushReplacement(context, route);
         }
-      });
+      }
     });
   }
 }
