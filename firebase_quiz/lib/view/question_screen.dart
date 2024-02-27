@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class QuestionScreen extends StatefulWidget {
   const QuestionScreen({super.key});
@@ -13,30 +11,30 @@ class _QuestionScreenState extends State<QuestionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF004840),
+      backgroundColor: const Color(0xFF004840),
       body: Container(
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 50, left: 20),
+              padding: const EdgeInsets.only(top: 50, left: 20),
               child: Row(
                 children: [
                   Container(
-                    padding: EdgeInsets.all(6),
+                    padding: const EdgeInsets.all(6),
                     decoration: BoxDecoration(
-                        color: Color(0xFFf35b32),
+                        color: const Color(0xFFf35b32),
                         borderRadius: BorderRadius.circular(60)),
-                    child: Center(
+                    child: const Center(
                       child: Icon(
                         Icons.arrow_back_ios,
                         color: Colors.white,
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 100,
                   ),
-                  Text(
+                  const Text(
                     'Sports',
                     style: TextStyle(
                       color: Colors.white,
@@ -47,43 +45,107 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 ],
               ),
             ),
+            const SizedBox(
+              height: 10,
+            ),
             Expanded(
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30))),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(left: 20, right: 20, top: 40),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.asset(
-                          'assets/cr7.jfif',
-                          height: 300,
-                          width: MediaQuery.of(context).size.width,
-                          fit: BoxFit.cover,
+              child: SingleChildScrollView(
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30))),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding:
+                            const EdgeInsets.only(left: 20, right: 20, top: 40),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.asset(
+                            'assets/cr7.jfif',
+                            height: 300,
+                            width: MediaQuery.of(context).size.width,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Color(0xFF818181)),
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Text(
-                        'Cristiano Ronaldo',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500),
+                      const SizedBox(
+                        height: 20,
                       ),
-                    )
-                  ],
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        padding: const EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: const Color(0xFF818181), width: 1.5),
+                            borderRadius: BorderRadius.circular(15)),
+                        child: const Text(
+                          'Cristiano Ronaldo',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        padding: const EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: const Color(0xFF818181), width: 1.5),
+                            borderRadius: BorderRadius.circular(15)),
+                        child: const Text(
+                          'Lionel Messi',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        padding: const EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: const Color(0xFF818181), width: 1.5),
+                            borderRadius: BorderRadius.circular(15)),
+                        child: const Text(
+                          'Neymar',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        padding: const EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: const Color(0xFF818181), width: 1.5),
+                            borderRadius: BorderRadius.circular(15)),
+                        child: const Text(
+                          'Andres Iniesta',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
